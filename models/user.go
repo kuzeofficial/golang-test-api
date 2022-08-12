@@ -1,7 +1,7 @@
 package model
 
 type User struct {
-	Id    string `json:"id"`
+	Key   string `json:"key"`
 	Name  string `json:"name" validate:"required"`
 	Title string `json:"title" validate:"required"`
 }

@@ -7,13 +7,13 @@ import (
 
 func GetUser(c *fiber.Ctx) error {
 	param := c.AllParams()
-	var paramId = ""
+	var paramKey = ""
 	for paramName, paramValue := range param {
-		if paramName == "id" {
-			paramId = paramValue
+		if paramName == "key" {
+			paramKey = paramValue
 		}
 	}
-	users := services.GetUser(paramId)
+	users := services.GetUser(paramKey)
 	if len(users) == 0 {
 		return c.Status(fiber.StatusAccepted).JSON(fiber.Map{
 			"message": "No hay usuarios",

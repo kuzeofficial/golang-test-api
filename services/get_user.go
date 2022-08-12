@@ -2,19 +2,20 @@ package services
 
 import (
 	"fmt"
-
 	"github.com/deta/deta-go/service/base"
 	model "github.com/kuzeofficial/golang-test-api/models"
 	"github.com/kuzeofficial/golang-test-api/repositories"
+	utilities "github.com/kuzeofficial/golang-test-api/utils"
 )
 
-func GetUser(id string) []*model.User {
+func GetUser(key string) []*model.User {
 	d := repositories.ConnectDatabase()
-	db, err := base.New(d, "base_name")
+	variables := utilities.GetEnviromentsVariables()
+	db, err := base.New(d, variables.DetaBaseName)
 	var users []*model.User
 	_, err = db.Fetch(&base.FetchInput{
 		Q: base.Query{
-			{"id": id},
+			{"key": key},
 		},
 		Dest: &users,
 	})
