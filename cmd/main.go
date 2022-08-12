@@ -15,5 +15,6 @@ func main() {
 	app.Get("/users", handlers.GetUsersHandler)
 	app.Get("/user/:key", handlers.GetUser)
 	app.Post("/user/new", handlers.SetUser)
+	app.Delete("/user/:key", handlers.DelUser)
 	app.Listen(":3000")
 }

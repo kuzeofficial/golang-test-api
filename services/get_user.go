@@ -5,13 +5,10 @@ import (
 	"github.com/deta/deta-go/service/base"
 	model "github.com/kuzeofficial/golang-test-api/models"
 	"github.com/kuzeofficial/golang-test-api/repositories"
-	utilities "github.com/kuzeofficial/golang-test-api/utils"
 )
 
 func GetUser(key string) []*model.User {
-	d := repositories.ConnectDatabase()
-	variables := utilities.GetEnviromentsVariables()
-	db, err := base.New(d, variables.DetaBaseName)
+	db, err := repositories.ConnectDatabase()
 	var users []*model.User
 	_, err = db.Fetch(&base.FetchInput{
 		Q: base.Query{
