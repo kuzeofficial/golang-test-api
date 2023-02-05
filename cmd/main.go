@@ -11,7 +11,6 @@ func main() {
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "*",
 	}))
-	// app.Get("/", helloWorldHandler)
 	app.Get("/users", handlers.GetUsersHandler)
 	app.Get("/user/:key", handlers.GetUser)
 	app.Post("/user/new", handlers.SetUser)

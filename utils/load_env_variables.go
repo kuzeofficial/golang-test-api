@@ -1,16 +1,18 @@
 package utilities
 
 import (
-	"github.com/joho/godotenv"
-	model "github.com/kuzeofficial/golang-test-api/models"
 	"log"
 	"os"
+
+	"github.com/joho/godotenv"
+	model "github.com/kuzeofficial/golang-test-api/models"
 )
 
 func GetEnviromentsVariables() model.Env {
-	err := godotenv.Load()
+	err := godotenv.Load("../.env")
 	var variables model.Env
 	if err != nil {
+		log.Fatalln(err)
 		log.Fatalln("Error al cargar las variables")
 	}
 	variables.DetaProjectKey = os.Getenv("DETA_PROJECT_KEY")
